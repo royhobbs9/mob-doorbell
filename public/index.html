@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+  <meta charset='UTF-8'>
+  <title>Doorbell App</title>
+</head>
+
+<body>
+  <input type="text" id="userid">user id</input>
+  <button id='bell'>Bell</button>
+  <button id='in'>In</button>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js'></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.js"
+    integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
+  <script>
+    var socket = io('https://sdcs-here-i-am.herokuapp.com/');
+    $('#bell').click(() => {
+      console.log('in click');
+      console.log(`user id:${$('#userid').val()}`);
+      navigator.geolocation.getCurrentPosition(function (location) {
+        socket.emit('doorbell', {
+          userid: $('#userid').val(),
+          location: {
+            lat: location.coords.latitude,
+            long: location.coords.longitude
+          }
+        });
+      });
+
+      socket.on('got it', function () {
+        console.log('socket on got it');
+      });
+    });
+  </script>
+
+</body>
+
+</html>

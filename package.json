@@ -1,0 +1,24 @@
+{
+  "name": "mob_doorbell",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KrisLogemann/Mob_Doorbell.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KrisLogemann/Mob_Doorbell/issues"
+  },
+  "homepage": "https://github.com/KrisLogemann/Mob_Doorbell#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0"
+  }
+}
